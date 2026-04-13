@@ -73,6 +73,7 @@ namespace MailingApp.Utilities
         public const string RESP_FAILED_MANDATORY_AREA_NAME = "Area name is mandatory";
         public const string RESP_FAILED_MANDATORY_LOCATION_ID = "ID location is mandatory";
         public const string RESP_FAILED_MANDATORY_LOCATION_NAME = "Location name is mandatory";
+        public const string RESP_FAILED_MANDATORY_ZONE_ID = "ID zone is mandatory";
         public const string RESP_FAILED_MANDATORY_ZONE_NAME = "Zone name is mandatory";
         public const string RESP_REQPARAM_FORMAT_USER_EMAIL = "Email pengguna tidak memenuhi format untuk email address";
         public const string RESP_REQPARAM_FORMAT_USER_PASSWORD = "Password minimal 8 karakter";
@@ -87,6 +88,8 @@ namespace MailingApp.Utilities
         public const string RESP_FAILED_PERMISSION_HAS_REVIEWED = "This transaction has been reviewed";
         public const string RESP_FAILED_REFERENCE = "failed reference data";
         public const string RESP_FAILED_REFERENCE_DATA = "Data not found";
+        public const string RESP_FAILED_REFERENCE_DATA_ZONE = "Zone data not found";
+        public const string RESP_FAILED_REFERENCE_DATA_AREA = "Area data not found";
         public const string RESP_FAILED_EXISTED = "failed data already exist";
         public const string RESP_FAILED_NOT_UPLOADED = "failed data not uploaded";
     }

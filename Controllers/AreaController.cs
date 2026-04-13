@@ -9,16 +9,16 @@ using Microsoft.EntityFrameworkCore;
 namespace MailingApp.Controllers
 {
     [ApiController]
-    [Route("api/zone")]
+    [Route("api/area")]
 
-    public class ZoneController : ControllerBase
+    public class AreaController : ControllerBase
     {
-        private readonly ZoneService _zoneService;
+        private readonly AreaService _areaService;
         private readonly PermissionUtil _permissionUtil;
 
-        public ZoneController(ZoneService zoneService, PermissionUtil permissionUtil)
+        public AreaController(AreaService areaService, PermissionUtil permissionUtil)
         {
-            _zoneService = zoneService;
+            _areaService = areaService;
             _permissionUtil = permissionUtil;
         }
 
@@ -29,15 +29,15 @@ namespace MailingApp.Controllers
             try
             {
                 // VALIDATION
-                ResStatusFailedDto validation = _zoneService.ValidateReqGetListData(reqDto);
+                ResStatusFailedDto validation = _areaService.ValidateReqGetListData(reqDto);
                 if (!validation.category.Equals(Const.RES_SUCCESS))
                 {
                     return Ok(new ResFailedDto(new ResStatusDto(validation.category, validation.remark), validation.httpCode, null));
                 }
                 // END VALIDATION
 
-                var zones = _zoneService.GetAllData(reqDto);
-                return Ok(new ResSuccessDto(Const.RESP_SUCCESS_RETRIEVE_DATA, zones));
+                var areas = _areaService.GetAllData(reqDto);
+                return Ok(new ResSuccessDto(Const.RESP_SUCCESS_RETRIEVE_DATA, areas));
             }
             catch (DbUpdateException dbEx)
             {
@@ -61,15 +61,15 @@ namespace MailingApp.Controllers
             try
             {
                 // VALIDATION
-                ResStatusFailedDto validation = _zoneService.ValidateReqGetDetailData(reqDto);
+                ResStatusFailedDto validation = _areaService.ValidateReqGetDetailData(reqDto);
                 if (!validation.category.Equals(Const.RES_SUCCESS))
                 {
                     return Ok(new ResFailedDto(new ResStatusDto(validation.category, validation.remark), validation.httpCode, null));
                 }
                 // END VALIDATION
 
-                var zone = _zoneService.GetData(reqDto);
-                return Ok(new ResSuccessDto(Const.RESP_SUCCESS_RETRIEVE_DATA, zone));
+                var area = _areaService.GetData(reqDto);
+                return Ok(new ResSuccessDto(Const.RESP_SUCCESS_RETRIEVE_DATA, area));
             }
             catch (DbUpdateException dbEx)
             {
@@ -87,12 +87,12 @@ namespace MailingApp.Controllers
 
         [HttpPost]
         [Authorize(Policy = Const.POLICY_ROLE_ADMIN)]
-        public ActionResult Store([FromBody] ReqCreateZoneDto reqDto)
+        public ActionResult Store([FromBody] ReqCreateAreaDto reqDto)
         {
             try
             {
                 // VALIDATION
-                ResStatusFailedDto validation = _zoneService.ValidateReqPostInsertData(reqDto);
+                ResStatusFailedDto validation = _areaService.ValidateReqPostInsertData(reqDto);
                 if (!validation.category.Equals(Const.RES_SUCCESS))
                 {
                     return Ok(new ResFailedDto(new ResStatusDto(validation.category, validation.remark), validation.httpCode, null));
@@ -101,7 +101,7 @@ namespace MailingApp.Controllers
 
                 UserData userData = _permissionUtil.RetrieveUser();
 
-                _zoneService.InsertData(reqDto, userData);
+                _areaService.InsertData(reqDto, userData);
                 return Ok(new ResSuccessDto(Const.RESP_SUCCESS_INSERT_DATA, null));
             }
             catch (DbUpdateException dbEx)
@@ -120,12 +120,12 @@ namespace MailingApp.Controllers
 
         [HttpPut]
         [Authorize(Policy = Const.POLICY_ROLE_ADMIN)]
-        public ActionResult Update(ReqUpdateZoneDto reqDto)
+        public ActionResult Update(ReqUpdateAreaDto reqDto)
         {
             try
             {
                 // VALIDATION
-                ResStatusFailedDto validation = _zoneService.ValidateReqPostUpdateData(reqDto);
+                ResStatusFailedDto validation = _areaService.ValidateReqPostUpdateData(reqDto);
                 if (!validation.category.Equals(Const.RES_SUCCESS))
                 {
                     return Ok(new ResFailedDto(new ResStatusDto(validation.category, validation.remark), validation.httpCode, null));
@@ -133,7 +133,7 @@ namespace MailingApp.Controllers
                 // END VALIDATION
                 UserData userData = _permissionUtil.RetrieveUser();
 
-                _zoneService.UpdateData(reqDto, userData);
+                _areaService.UpdateData(reqDto, userData);
                 return Ok(new ResSuccessDto(Const.RESP_SUCCESS_UPDATE_DATA, null));
             }
             catch (DbUpdateException dbEx)
@@ -157,7 +157,7 @@ namespace MailingApp.Controllers
             try
             {
                 // VALIDATION
-                ResStatusFailedDto validation = _zoneService.ValidateReqGetDetailData(reqDto);
+                ResStatusFailedDto validation = _areaService.ValidateReqGetDetailData(reqDto);
                 if (!validation.category.Equals(Const.RES_SUCCESS))
                 {
                     return Ok(new ResFailedDto(new ResStatusDto(validation.category, validation.remark), validation.httpCode, null));
@@ -165,7 +165,7 @@ namespace MailingApp.Controllers
                 // END VALIDATION
                 UserData userData = _permissionUtil.RetrieveUser();
 
-                _zoneService.DeleteData(reqDto, userData);
+                _areaService.DeleteData(reqDto, userData);
                 return Ok(new ResSuccessDto(Const.RESP_SUCCESS_DESTROY_DATA, null));
             }
             catch (DbUpdateException dbEx)

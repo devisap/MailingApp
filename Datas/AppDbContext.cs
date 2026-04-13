@@ -9,5 +9,6 @@ namespace MailingApp.Datas
         {
         }
         public DbSet<Zone> Zones { get; set; }
+        public DbSet<Area> Areas { get; set; }
     }
 }
