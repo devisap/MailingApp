@@ -73,6 +73,7 @@ namespace MailingApp.Utilities
         public const string RESP_FAILED_MANDATORY_AREA_NAME = "Area name is mandatory";
         public const string RESP_FAILED_MANDATORY_LOCATION_ID = "ID location is mandatory";
         public const string RESP_FAILED_MANDATORY_LOCATION_NAME = "Location name is mandatory";
+        public const string RESP_FAILED_MANDATORY_ZONE_NAME = "Zone name is mandatory";
         public const string RESP_REQPARAM_FORMAT_USER_EMAIL = "Email pengguna tidak memenuhi format untuk email address";
         public const string RESP_REQPARAM_FORMAT_USER_PASSWORD = "Password minimal 8 karakter";
         public const string RESP_REQPARAM_FORMAT_FILE_IMAGE = "File must be type of image like .jpg, .jpeg, .png";

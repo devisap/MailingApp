@@ -1,4 +1,4 @@
-// using MailingApp.Models.Entities;
+using MailingApp.Models.Entites;
 using Microsoft.EntityFrameworkCore;
 
 namespace MailingApp.Datas
@@ -7,7 +7,7 @@ namespace MailingApp.Datas
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
         }
+        public DbSet<Zone> Zones { get; set; }
     }
 }
